@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Departments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h3>Department List</h3>
+        <br>
+
+        <!-- Add a button -->
+        <a th:href="@{/employees/showFormForAdd}"
+           class="btn btn-primary btn-sm mb-3">
+            Add Employee
+        </a>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <th>Department Id</th>
+                <th>Department Name</th>
+                <!-- <th>Action</th> -->
+            </thead>
+            <tbody>
+                <tr th:each="eachDept : ${departments}">
+                    <td th:text="${eachDept.deptId}" />
+                    <td th:text="${eachDept.deptName}" />
+
+                    <!-- Add Show Employees button/link -->
+                    <td>
+                        <a th:href="@{/departments/showEmployees(departmentId=${eachDept.deptId})}"
+                           class="btn btn-info btn-sm">
+                            Show Employees
+                        </a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/employees/list}">Show Employees List</a>
+    </div>
+
+</body>
+
+</html>
