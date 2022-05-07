@@ -25,8 +25,13 @@ public class DepartmentControllerWithDB {
         employeeService = theEmployeeService;
     }
 
+    @GetMapping("/home")
+    public String showHome(){
+        return "departments/home";
+    }
+
     @GetMapping("/list")
-    public String listEmployees(Model theModel){
+    public String listDepartments(Model theModel){
 
         List<Department> theDepartments = departmentService.findAll();
         theModel.addAttribute("departments",theDepartments);

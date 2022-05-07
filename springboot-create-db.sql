@@ -1,8 +1,8 @@
-DROP SCHEMA IF EXISTS `springboot-one-to-many-uni`;
+DROP SCHEMA IF EXISTS `springdemo`;
 
-CREATE SCHEMA `springboot-one-to-many-uni`;
+CREATE SCHEMA `springdemo`;
 
-use `springboot-one-to-many-uni`;
+use `springdemo`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -40,5 +40,21 @@ CREATE TABLE `employee` (
   
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `password` char(68) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` 
+VALUES 
+('mohan','{bcrypt}$2a$12$3lyD6KxtXqSgcEWHet95aeLjv0LaZ8SN96auKm8uN.dNhg/C3s7Ke',1),
+('arjun','{bcrypt}$2a$12$qA0OsJcyVrRIWe6RkyJg7uyGQ9t9Hjo8qQiOZKVzn7CzK9WALL92q',1);
+
+#mohan - mohan123
+#arjun - arjun123
 
 SET FOREIGN_KEY_CHECKS = 1;
