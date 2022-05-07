@@ -18,6 +18,11 @@ CREATE TABLE `department` (
   
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
+INSERT INTO `department`
+VALUES
+(102,'HR'),
+(101,'Ops'),
+(100,'Tech');
 
 DROP TABLE IF EXISTS `employee`;
 
@@ -40,6 +45,16 @@ CREATE TABLE `employee` (
   
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `employee`
+VALUES
+(1,'Paul','Brandon','paul.brandon@gmail.com',102),
+(2,'Tine','Nailor','tina.nailor@gmail.com',102),
+(3,'Ketan','Shah','ketan.shah@gmail.com',101),
+(4,'Rahul','Raj','rahul.raj@gmail.com',101),
+(5,'Gunjal','Kumar','gunjal.kumar@gmail.com',100),
+(6,'Sasi','Venna','sasi.venna@gmail.com',100),
+(7,'John','Feddrick','john.feddrick@gmail.com',100);
+
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
@@ -51,10 +66,25 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` 
 VALUES 
-('mohan','{bcrypt}$2a$12$3lyD6KxtXqSgcEWHet95aeLjv0LaZ8SN96auKm8uN.dNhg/C3s7Ke',1),
-('arjun','{bcrypt}$2a$12$qA0OsJcyVrRIWe6RkyJg7uyGQ9t9Hjo8qQiOZKVzn7CzK9WALL92q',1);
+('mohan','$2a$12$3lyD6KxtXqSgcEWHet95aeLjv0LaZ8SN96auKm8uN.dNhg/C3s7Ke',1),
+('arjun','$2a$12$qA0OsJcyVrRIWe6RkyJg7uyGQ9t9Hjo8qQiOZKVzn7CzK9WALL92q',1);
 
 #mohan - mohan123
 #arjun - arjun123
+
+DROP TABLE IF EXISTS `authorities`;
+CREATE TABLE `authorities` (
+  `username` varchar(50) NOT NULL,
+  `authority` varchar(50) NOT NULL,
+  UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
+  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `authorities` 
+VALUES 
+('mohan','ROLE_EMPLOYEE'),
+('mohan','ROLE_ADMIN'),
+('arjun','ROLE_EMPLOYEE');
 
 SET FOREIGN_KEY_CHECKS = 1;

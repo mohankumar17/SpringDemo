@@ -10,6 +10,8 @@
 
     <div class="container">
 
+        <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+
         <h3>Department List</h3>
         <br>
 
@@ -44,6 +46,10 @@
 
         <a th:href="@{/departments/home}">Back to Home</a>
         <br><br>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" />
+        </form>
 
 
     </div>
