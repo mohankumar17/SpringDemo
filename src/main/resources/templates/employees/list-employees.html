@@ -14,7 +14,7 @@
         <br>
 
         <!-- Add a button -->
-        <!-- <a th:href="@{/employees/showFormForAdd}"
+        <!-- <a th:href="@{/employees/addForm}"
            class="btn btn-primary btn-sm mb-3">
             Add Employee
         </a> -->
@@ -36,7 +36,7 @@
 
                     <!-- Add update button/link -->
                     <td>
-                        <a th:href="@{/employees/showFormForUpdate(employeeId=${eachEmp.id})}"
+                        <a th:href="@{/employees/updateForm(employeeId=${eachEmp.id})}"
                            class="btn btn-info btn-sm">
                             Update
                         </a>
@@ -56,7 +56,7 @@
             </tbody>
         </table>
 
-        <a th:href="@{/departments/list}">Back to Department List</a>
+        <a th:href="@{/departments/}">Back to Department List</a>
 
     </div>
 

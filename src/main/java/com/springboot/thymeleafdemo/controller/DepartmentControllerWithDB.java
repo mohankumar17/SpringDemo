@@ -25,12 +25,12 @@ public class DepartmentControllerWithDB {
         employeeService = theEmployeeService;
     }
 
-    @GetMapping("/home")
+    /*@GetMapping("/home")
     public String showHome(){
         return "departments/home";
-    }
+    }*/
 
-    @GetMapping("/list")
+    @GetMapping("/")
     public String listDepartments(Model theModel){
 
         List<Department> theDepartments = departmentService.findAll();

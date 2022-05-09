@@ -16,7 +16,7 @@
         <br>
 
         <!-- Add a button -->
-        <a th:href="@{/employees/showFormForAdd}"
+        <a th:href="@{/employees/addForm}"
            class="btn btn-primary btn-sm mb-3">
             Add Employee
         </a>
@@ -44,7 +44,12 @@
             </tbody>
         </table>
 
-        <a th:href="@{/departments/home}">Back to Home</a>
+        <br>
+
+        <a th:href="@{/employees/list}">
+            Show All Employees
+        </a>
+
         <br><br>
 
         <form th:action="@{/logout}" method="post">
