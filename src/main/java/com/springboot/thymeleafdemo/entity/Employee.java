@@ -1,6 +1,10 @@
 package com.springboot.thymeleafdemo.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -15,18 +19,19 @@ public class Employee {
 	private int id;
 	
 
+	@NotBlank(message = "First Name is required")
 	@Column(name="first_name")
 	private String firstName;
 
-
+	@NotBlank(message = "Last Name is required")
 	@Column(name="last_name")
 	private String lastName;
 
-
+	@NotBlank(message = "Email is required")
+	@Email(message = "Please Provide Valid Email")
 	@Column(name="email")
 	private String email;
 
-	//@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@ManyToOne
 	@JoinColumn(name = "dept_id")
 	private Department theDepartment;

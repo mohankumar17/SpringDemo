@@ -10,11 +10,13 @@
 
     <div class="container">
 
-        <h3>Department List</h3>
+        <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+
+        <h4>Department List</h4>
         <br>
 
         <!-- Add a button -->
-        <a th:href="@{/employees/showFormForAdd}"
+        <a th:href="@{/employees/addForm}"
            class="btn btn-primary btn-sm mb-3">
             Add Employee
         </a>
@@ -42,8 +44,17 @@
             </tbody>
         </table>
 
-        <a th:href="@{/departments/home}">Back to Home</a>
+        <br>
+
+        <a th:href="@{/employees/list}">
+            Show All Employees
+        </a>
+
         <br><br>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" />
+        </form>
 
 
     </div>

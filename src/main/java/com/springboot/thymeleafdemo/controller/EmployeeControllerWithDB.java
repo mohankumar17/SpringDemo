@@ -5,8 +5,10 @@ import com.springboot.thymeleafdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -28,7 +30,7 @@ public class EmployeeControllerWithDB {
         return "employees/list-employees";
     }
 
-    @GetMapping("/showFormForAdd")
+    @GetMapping("/addForm")
     public String showFormForAdd(Model theModel) {
 
         // create model attribute to bind form data
@@ -40,8 +42,7 @@ public class EmployeeControllerWithDB {
     }
 
 
-
-    @GetMapping("/showFormForUpdate")
+    @GetMapping("/updateForm")
     public String showFormForUpdate(@RequestParam("employeeId") int theId,
                                     Model theModel) {
 
@@ -58,11 +59,15 @@ public class EmployeeControllerWithDB {
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
 
-        // save the employee
-        employeeService.save(theEmployee);
+        if(theEmployee.getId()==0){
+            employeeService.save(theEmployee);
+        }
+        else{
+            employeeService.update(theEmployee);
+        }
 
         // use a redirect to prevent duplicate submissions
-        return "redirect:/departments/list";
+        return "redirect:/departments/";
     }
 
     @GetMapping("/delete")
@@ -72,7 +77,7 @@ public class EmployeeControllerWithDB {
         employeeService.deleteById(theId);
 
         // redirect to /employees/list
-        return "redirect:/departments/list";
+        return "redirect:/departments/";
 
     }
 
