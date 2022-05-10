@@ -64,7 +64,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		Session currentSession = entityManager.unwrap(Session.class);
 
 		// save employee
-		currentSession.saveOrUpdate(theEmployee);
+		currentSession.save(theEmployee);
+	}
+
+	@Override
+	public void update(Employee theEmployee) {
+
+		// get the current hibernate session
+		Session currentSession = entityManager.unwrap(Session.class);
+
+		// save employee
+		currentSession.update(theEmployee);
 	}
 
 

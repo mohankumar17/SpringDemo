@@ -59,8 +59,12 @@ public class EmployeeControllerWithDB {
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
 
-        // save the employee
-        employeeService.save(theEmployee);
+        if(theEmployee.getId()==0){
+            employeeService.save(theEmployee);
+        }
+        else{
+            employeeService.update(theEmployee);
+        }
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/departments/";
