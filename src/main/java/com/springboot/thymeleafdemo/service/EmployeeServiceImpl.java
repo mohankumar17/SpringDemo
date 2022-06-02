@@ -38,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		else {
 			// we didn't find the employee
 			throw new RuntimeException("Did not find employee id - " + theId);
+			//System.out.println("Did not find employee id - " + theId);
 		}
 		
 		return theEmployee;

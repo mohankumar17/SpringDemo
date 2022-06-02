@@ -1,5 +1,9 @@
 package com.springboot.thymeleafdemo.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -9,6 +13,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name="employee")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Employee {
 
 	// define fields
@@ -38,10 +45,7 @@ public class Employee {
 	
 		
 	// define constructors
-	
-	public Employee() {
-		
-	}
+
 	
 	public Employee(int id, String firstName, String lastName, String email) {
 		this.id = id;
@@ -63,42 +67,6 @@ public class Employee {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Department getTheDepartment() {
-		return theDepartment;
-	}
-
-	/*public void setTheDepartment(Department theDepartment) {
-		this.theDepartment = theDepartment;
-	}*/
-
 	public void setTheDepartment(Department theDepartment) {
 		//prevent endless loop
 		if (sameAsFormer(theDepartment))
@@ -110,12 +78,6 @@ public class Employee {
 		return Objects.equals(theDepartment, newDepartment);
 	}
 
-	// define tostring
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}
 		
 }
 

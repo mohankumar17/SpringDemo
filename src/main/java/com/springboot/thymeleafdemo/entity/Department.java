@@ -1,11 +1,18 @@
 package com.springboot.thymeleafdemo.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="department")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Department {
 
     @Id
@@ -20,36 +27,11 @@ public class Department {
     @JoinColumn(name="dept_id")
     private List<Employee> employees;
 
-    public Department(){}
-
     public Department(int deptId, String deptName) {
         this.deptId = deptId;
         this.deptName = deptName;
     }
 
-    public int getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(int deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
 
     public void add(Employee tempEmp){
         if(tempEmp==null){
@@ -58,11 +40,4 @@ public class Department {
         employees.add(tempEmp);
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "deptId=" + deptId +
-                ", deptName='" + deptName + '\'' +
-                '}';
-    }
 }
