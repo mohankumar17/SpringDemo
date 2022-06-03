@@ -9,17 +9,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.springboot</groupId>
-	<artifactId>thymeleafdemo</artifactId>
+	<artifactId>SpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>thymeleafdemo</name>
-	<description>Demo project for Spring Boot</description>
+
+	<name>SpringDemo</name>
+	<description>Spring Boot Demonstration Project</description>
+
 	<properties>
 		<java.version>11</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<sonar.organization>zemosoint</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-
-
 	</properties>
 
 
@@ -55,11 +55,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
@@ -102,9 +97,8 @@
 			<scope>test</scope>
 		</dependency>
 
-
-
 	</dependencies>
+
 
 	<build>
 		<plugins>
@@ -112,8 +106,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.7</version>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<goals>
+								<goal>report</goal>
+							</goals>
+							<configuration>
+								<formats>
+									<format>XML</format>
+								</formats>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 		</plugins>
+
 	</build>
 
 </project>
